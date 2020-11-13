@@ -1,8 +1,14 @@
 const fs = require("fs");
 
-module.exports = (string) => {
+module.exports = () => {
+  
+  
   fs.readdir(__dirname, (err, data) => {
-    if (string === "ls") {
+
+    if(err){
+      throw err;
+    } else{
+
       //   process.stdout.write("\n");
       process.stdout.write(
         data
@@ -10,11 +16,13 @@ module.exports = (string) => {
             if (index !== 0) {
               return `   ${element}`;
             }
-            return element;
+            return `\n${element}`;
           })
           .join("")
       );
       process.stdout.write("\nPrompt > ");
+  
     }
+    
   });
 };

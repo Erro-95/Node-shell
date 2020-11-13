@@ -1,13 +1,25 @@
+// importing the files
 const pwd = require("./pwd");
 const ls = require("./ls");
+const cat = require("./cat")
 
+//outputing this prompt
 process.stdout.write("Prompt > ");
 
+
+
 process.stdin.on("data", (data) => {
+ 
   const cmd = data.toString().trim();
 
-  pwd(cmd);
-  ls(cmd);
-
-  //   process.stdout.write("You typed: " + cmd);
+  if (cmd === "pwd") pwd();
+  else if (cmd === "ls") ls();
+  else if (cmd === "cat") cat();
+  
+  
+  
+  else process.stdout.write("You typed: " + cmd);
+       
+  
+ process.stdout.write("\nPrompt > ");
 });
