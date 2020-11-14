@@ -1,28 +1,20 @@
 const fs = require("fs");
 
-module.exports = () => {
-  
-  
+module.exports = (done) => {
   fs.readdir(__dirname, (err, data) => {
-
-    if(err){
+    if (err) {
       throw err;
-    } else{
-
-      //   process.stdout.write("\n");
-      process.stdout.write(
+    } else {
+      done(
         data
           .map((element, index) => {
             if (index !== 0) {
               return `   ${element}`;
             }
-            return `\n${element}`;
+            return `${element}`;
           })
           .join("")
       );
-      process.stdout.write("\nPrompt > ");
-  
     }
-    
   });
 };

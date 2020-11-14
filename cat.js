@@ -1,12 +1,11 @@
 const fs = require("fs");
 
-module.exports = (fileName) => {
+module.exports = (fileName, done) => {
   fs.readFile(`${process.cwd()}/${fileName}`, (err, data) => {
     if (err) {
       throw err;
     } else {
-      process.stdout.write(data.toString());
-      process.stdout.write("\nPrompt > ");
+      done(data.toString());
     }
   });
 };
