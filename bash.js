@@ -24,10 +24,8 @@ process.stdin.on("data", (data) => {
   else if (cmd.split(" ")[0] === "head") head(cmd.split(" ")[1], done);
   else if (cmd.split(" ")[0] === "tail") tail(cmd.split(" ")[1], done);
   else if (cmd.split(" ")[0] === "sort") sort(cmd.split(" ")[1], done);
-  else {
-    process.stdout.write("You typed: " + cmd);
-    process.stdout.write("\nPrompt > ");
-  }
+  else done("You typed: " + cmd);
+
 });
 
 function done(output) {
